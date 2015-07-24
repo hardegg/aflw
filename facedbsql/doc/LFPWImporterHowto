@@ -1,0 +1,30 @@
+LFPW IMPORT HOWTO
+-----------------
+
+First, check below for the needed directory structure.
+Second, download the two ".csv" files (kbvt_lfpw_v1_test.csv, kbvt_lfpw_v1_train.csv) 
+from "http://www.kbvt.com/LFPW/".
+
+Then, in data/lfpw/ use imgfetcher.py (Python Script) to fetch the images.
+The test images are downloaded in the subfolder "test" and
+vice-versa the train images in the subfolder "train".
+All images names should start either "test" or "train"
+followed by 6 digits and the file extention ".jpg", like "test000008.jpg".
+Use deleter.py (Python Script) to clean up non-images, such as http responses etc.
+Check the images manually for final clean up before importing the data.
+
+Ensure that invalid.txt is in the data/lfpw/ directory. It is a list of images
+where we know that these are not valid anymore. The importer needs it.
+
+Finally, import the data with the LFPWImport binary. It has a built in help.
+
+Example:
+
+data/aflw.sqlite
+data/lfpw/kbvt_lfpw_v1_test.csv
+data/lfpw/kbvt_lfpw_v1_train.csv
+data/lfpw/invalid.txt
+data/lfpw/test/test000010.jpg
+              /test00...
+data/lfpw/train/train000013.jpg
+               /train00...

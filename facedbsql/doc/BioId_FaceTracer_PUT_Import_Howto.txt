@@ -1,0 +1,67 @@
+BIOID IMPORTER HOWTO
+--------------------
+
+First check below for the needed directory structure (see example). 
+Second download or copy the bioid data to this directory. It is possible to use a 
+different directory structure, but therefore the script import_bioid.sh should be adjusted.
+Finally use import_bioid.sh located in the "facedbsql/sample_scripts" folder 
+or just run the BioIdImporter binary. 
+This importer has a built in help to show what files and directories are needed.
+
+Example: 
+data/aflw.sqlite
+data/bioid/BioID_0000.eye
+          /BioID_...
+data/bioid/BioID_0000.pgm
+          /BioID_...
+data/bioid/bioid_pts/points_20/bioid_0000.pts
+                              /bioid_...
+							  
+							  
+PUT IMPORTER HOWTO
+------------------
+
+First check below for the needed directory structure (see example). 
+Second download or copy the put data to this directory. It is possible to use a 
+different directory structure, but import_put.sh script should be adjusted to work properly.
+The contours can be ignored, cause they are not used.  
+Finally use import_put.sh located in the "facedbsql/sample_scripts" folder 
+or just run the PutImporter binary. 
+This importer has a built in help to show what files and directories are needed.
+
+Example: 
+data/aflw.sqlite
+data/put/images/0001/00011001.JPG
+               /0.../000...
+data/put/landmarks/L001/00011001.yml
+                  /L.../000...
+data/put/regions/R001/00011001.yml
+                /R.../000...
+data/put/contours/C001/00011001.yml
+                 /C.../000...
+							  
+											  
+FACETRACER IMPORTER HOWTO
+-------------------------
+
+First check below for the needed directory structure (see example). 
+Second download the facetracer data. Then, in data/facetracer/ use imgfetcher.py 
+(Python Script) to fetch the images. Some of these images will be invalid and 
+will be automatically ignored by the FacetracerImporter.
+Finally use import_facetracer.sh located in the "facedbsql/sample_scripts" folder 
+or just run the FacetracerImporter binary. 
+This importer has a built in help to show what files and directories are needed.
+
+Example: 
+data/aflw.sqlite
+data/facetracer/image/000001.jpg
+                     /0...
+data/facetracer/attributes.txt
+data/facetracer/faceindex.txt
+data/facetracer/facelabels.txt
+data/facetracer/facestats.txt
+
+
+To clear the entries of an existing database, the argument --clear-sqldb can be set "true". This option 
+is available for all three importers.
+							  
