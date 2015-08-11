@@ -42,7 +42,7 @@ main (int argc, char **argv)
 	cout << "testing sqlite connection" << endl;
 	//string dbFilename = "~/.gvfs/public auf jupiter/projects/mdl/data/facedb-data";
 	//string dbFilename = "../db/facedb-data.db";
-	string dbFilename = "/home/fanglin/data/aflw/aflw/data/aflw.sqlite";
+	string dbFilename = "/media/ssd/data/aflw/data/aflw.sqlite";
 
 	SQLiteDBConnection *sqlConn = new SQLiteDBConnection();
 
@@ -53,8 +53,8 @@ main (int argc, char **argv)
 	double rollRange = 180*degree;
 
 
-    string rootFolder = "/home/fanglin/data/aflw/aflw/data/flickr";
-    string dstFolder = "/home/fanglin/data/aflw/aflw/data/faces";
+    string rootFolder = "/media/ssd/data/aflw/data/flickr";
+    string dstFolder = "/media/ssd/data/aflw/data/faces";
     
     string calibFolder = dstFolder + "/" + "calibration";
     string detecFolder = dstFolder + "/" + "detection";

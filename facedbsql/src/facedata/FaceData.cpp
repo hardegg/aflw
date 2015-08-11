@@ -118,9 +118,6 @@ void FaceData::SaveFaceRegion_rect(const string& rootFolder, const string& dstFo
     double x[3] = {-0.17, 0, 0.17};
     double y[3] = {-0.17, 0, 0.17};
 
-    cv::Size sizes[3] = {cv::Size(12, 12), cv::Size(24, 24), cv::Size(48, 48)};
-    
-    
     string calibFolder = dstFolderPath + "/" + "calibration";
     string detecFolder = dstFolderPath + "/" + "detection";
     
@@ -131,11 +128,11 @@ void FaceData::SaveFaceRegion_rect(const string& rootFolder, const string& dstFo
     ofCalib.open(string(calibFolder + "/filelist.txt").c_str(), std::ofstream::out);
      */
 
-       
+    static int nInvalids = 0;   
     for (int i = 0; i < rects.size(); i++) {
         cv::Rect rect = cv::Rect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-        cv::Rect imgRect = cv::Rect(0, 0, img.cols, img.rows);         
-        
+        cv::Rect imgRect = cv::Rect(0, 0, img.cols, img.rows);                 
+                
         for (int is = 0; is < 5; is++) {
             for (int ix = 0; ix < 3; ix++) {
                 for (int iy = 0; iy < 3; iy++) {
@@ -147,7 +144,7 @@ void FaceData::SaveFaceRegion_rect(const string& rootFolder, const string& dstFo
                     
                     cv::Rect newrect = ptbRect & imgRect;
                     //Skip if the rect is out of image range 
-                    if (newrect.area() != ptbRect.area())
+                    if (newrect.area() < ptbRect.area())
                         continue;
                     cv::Mat patch = img(ptbRect);
                     cv::Mat patch12, patch24, patch48;
